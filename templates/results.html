@@ -1,0 +1,321 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MessVoice | Voting Results</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            padding: 30px 15px;
+            color: #333;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        header {
+            background: white;
+            padding: 22px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        header h1 {
+            color: #5b4bb7;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .summary {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            margin-bottom: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .summary h2 {
+            color: #5b4bb7;
+            margin-bottom: 12px;
+        }
+
+        .total {
+            font-size: 42px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .meal-section {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 22px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+        }
+
+        .meal-section h2 {
+            color: #5b4bb7;
+            margin-bottom: 22px;
+        }
+
+        .food-row {
+            margin-bottom: 22px;
+        }
+
+        .food-info {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 9px;
+            flex-wrap: wrap;
+        }
+
+        .food-name {
+            font-weight: bold;
+            overflow-wrap: anywhere;
+        }
+
+        .vote-count {
+            color: #5b4bb7;
+            font-weight: bold;
+        }
+
+        .bar-background {
+            height: 13px;
+            background: #eeeafa;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .bar {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 20px;
+        }
+
+        .winner {
+            display: inline-block;
+            margin-top: 8px;
+            padding: 5px 10px;
+            background: #e6f7eb;
+            color: #187940;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .empty {
+            color: #777;
+            padding: 12px 0;
+            line-height: 1.5;
+        }
+
+        .actions {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin: 28px 0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 13px 23px;
+            border-radius: 9px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .primary {
+            background: white;
+            color: #5b4bb7;
+        }
+
+        .secondary {
+            border: 2px solid white;
+            color: white;
+        }
+
+        .btn:hover {
+            opacity: 0.88;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 10px;
+        }
+
+        @media (max-width: 500px) {
+            .meal-section {
+                padding: 18px;
+            }
+
+            header h1 {
+                font-size: 25px;
+            }
+
+            .total {
+                font-size: 34px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>📊 MessVoice Voting Results</h1>
+        <p>Your Food. Your Choice.</p>
+        <p>See what students prefer for their daily meals.</p>
+    </header>
+
+    <section class="summary">
+        <h2>🗳️ Total Votes Recorded</h2>
+        <div class="total">{{ total_votes }}</div>
+        <p>Thank you for making your voice count!</p>
+    </section>
+
+    <!-- BREAKFAST RESULTS -->
+    <section class="meal-section">
+        <h2>🌅 Breakfast Results</h2>
+
+        {% if breakfast_results %}
+            {% for food, count in breakfast_results %}
+                <div class="food-row">
+
+                    <div class="food-info">
+                        <span class="food-name">{{ food }}</span>
+                        <span class="vote-count">
+                            {{ count }} votes
+                        </span>
+                    </div>
+
+                    <div class="bar-background">
+                        <div class="bar"
+                             style="width: {{ (count / total_votes * 100) if total_votes else 0 }}%;">
+                        </div>
+                    </div>
+
+                    {% if loop.first and count > 0 %}
+                        <span class="winner">🏆 Most Popular</span>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty">
+                No breakfast votes recorded yet.
+            </p>
+        {% endif %}
+    </section>
+
+    <!-- LUNCH RESULTS -->
+    <section class="meal-section">
+        <h2>☀️ Lunch Results</h2>
+
+        {% if lunch_results %}
+            {% for food, count in lunch_results %}
+                <div class="food-row">
+
+                    <div class="food-info">
+                        <span class="food-name">{{ food }}</span>
+                        <span class="vote-count">
+                            {{ count }} votes
+                        </span>
+                    </div>
+
+                    <div class="bar-background">
+                        <div class="bar"
+                             style="width: {{ (count / total_votes * 100) if total_votes else 0 }}%;">
+                        </div>
+                    </div>
+
+                    {% if loop.first and count > 0 %}
+                        <span class="winner">🏆 Most Popular</span>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty">
+                No lunch votes recorded yet.
+            </p>
+        {% endif %}
+    </section>
+
+    <!-- DINNER RESULTS -->
+    <section class="meal-section">
+        <h2>🌙 Dinner Results</h2>
+
+        {% if dinner_results %}
+            {% for food, count in dinner_results %}
+                <div class="food-row">
+
+                    <div class="food-info">
+                        <span class="food-name">{{ food }}</span>
+                        <span class="vote-count">
+                            {{ count }} votes
+                        </span>
+                    </div>
+
+                    <div class="bar-background">
+                        <div class="bar"
+                             style="width: {{ (count / total_votes * 100) if total_votes else 0 }}%;">
+                        </div>
+                    </div>
+
+                    {% if loop.first and count > 0 %}
+                        <span class="winner">🏆 Most Popular</span>
+                    {% endif %}
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="empty">
+                No dinner votes recorded yet.
+            </p>
+        {% endif %}
+    </section>
+
+    <div class="actions">
+        <a href="/dashboard" class="btn primary">
+            🏠 Dashboard
+        </a>
+
+        <a href="/vote" class="btn secondary">
+            🗳️ Vote Now
+        </a>
+    </div>
+
+    <footer>
+        © 2026 MessVoice | Your Food. Your Choice.
+    </footer>
+
+</div>
+
+</body>
+</html>

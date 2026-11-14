@@ -1,0 +1,7 @@
+votes.db
+*.db
+.venv/
+venv/
+__pycache__/
+.env
+instance/

@@ -1,0 +1,151 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MessVoice | Hostel Mess Voting</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 900px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .tagline {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 0 auto 35px;
+            max-width: 650px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .login {
+            background: white;
+            color: #667eea;
+        }
+
+        .register {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .features {
+            margin-top: 55px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            width: 200px;
+        }
+
+        .feature h3 {
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            font-size: 14px;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">🍽️ MessVoice</div>
+
+        <div class="tagline">
+            Your Food. Your Choice.
+        </div>
+
+        <p class="description">
+            MessVoice is a smart hostel mess voting system that allows
+            students to vote for their preferred food and menu options.
+            Make your voice count!
+        </p>
+
+        <div class="buttons">
+            <a href="/login" class="btn login">Student Login</a>
+            <a href="/register" class="btn register">Register</a>
+        </div>
+
+        <div class="features">
+
+            <div class="feature">
+                <h3>🗳️ Vote</h3>
+                <p>Vote for your favourite food options.</p>
+            </div>
+
+            <div class="feature">
+                <h3>📊 Results</h3>
+                <p>View voting results and preferences.</p>
+            </div>
+
+            <div class="feature">
+                <h3>🍴 Menu</h3>
+                <p>Check the latest hostel mess menu.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

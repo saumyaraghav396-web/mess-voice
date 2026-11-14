@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MessVoice Registration</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .register-box {
+            background: white;
+            width: 400px;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #5b4bb7;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #666;
+        }
+
+        input {
+            width: 90%;
+            padding: 13px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        button {
+            width: 95%;
+            padding: 13px;
+            margin-top: 15px;
+            border: none;
+            border-radius: 10px;
+            background: #667eea;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #4f5fd1;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #5b4bb7;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="register-box">
+
+        <h1>🍽️ MessVoice</h1>
+
+        <p>Create your student account</p>
+
+        <form action="/register" method="POST">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+
+            <input
+                type="text"
+                name="student_id"
+                placeholder="Student ID"
+                required
+            >
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Full Name"
+                required
+            >
+
+            <input
+                type="password"
+                name="password"
+                placeholder="Password (minimum 12 characters)"
+                minlength="12"
+                required
+            >
+
+            <input
+                type="password"
+                name="confirm_password"
+                placeholder="Confirm Password"
+                minlength="12"
+                required
+            >
+            <button type="submit">
+                Register
+            </button>
+
+        </form>
+
+        <a href="/login">
+            Already have an account? Login
+        </a>
+
+    </div>
+
+</body>
+</html>

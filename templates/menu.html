@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MessVoice - Mess Menu</title>
+
+<style>
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    body {
+
+        min-height: 100vh;
+
+        background: linear-gradient(
+            135deg,
+            #667eea,
+            #764ba2
+        );
+
+        padding: 30px 15px;
+    }
+
+
+    .container {
+
+        max-width: 950px;
+
+        margin: auto;
+
+        background: white;
+
+        padding: 35px;
+
+        border-radius: 25px;
+
+        box-shadow:
+            0 15px 40px
+            rgba(0, 0, 0, 0.20);
+    }
+
+
+    /* HEADER */
+
+    .header {
+
+        text-align: center;
+
+        margin-bottom: 35px;
+    }
+
+
+    .header-icon {
+
+        font-size: 55px;
+
+        margin-bottom: 10px;
+    }
+
+
+    h1 {
+
+        color: #5b4bb7;
+
+        margin-bottom: 8px;
+    }
+
+
+    .subtitle {
+
+        color: #777;
+
+        font-size: 16px;
+    }
+
+
+    /* MENU GRID */
+
+    .menu-grid {
+
+        display: grid;
+
+        grid-template-columns:
+            repeat(3, 1fr);
+
+        gap: 22px;
+
+        margin-bottom: 30px;
+    }
+
+
+    /* MEAL CARD */
+
+    .meal-card {
+
+        background: #f8f8fc;
+
+        padding: 25px;
+
+        border-radius: 18px;
+
+        border: 2px solid transparent;
+
+        text-align: center;
+
+        transition: 0.3s;
+    }
+
+
+    .meal-card:hover {
+
+        transform: translateY(-6px);
+
+        border-color: #dcd8ff;
+
+        box-shadow:
+            0 10px 25px
+            rgba(0, 0, 0, 0.10);
+    }
+
+
+    .meal-icon {
+
+        font-size: 45px;
+
+        margin-bottom: 12px;
+    }
+
+
+    .meal-title {
+
+        color: #5b4bb7;
+
+        font-size: 22px;
+
+        margin-bottom: 18px;
+    }
+
+
+    /* FOOD ITEMS */
+
+    .food-item {
+
+        background: white;
+
+        padding: 13px;
+
+        margin: 9px 0;
+
+        border-radius: 10px;
+
+        color: #444;
+
+        font-size: 15px;
+
+        border: 1px solid #eeeeee;
+    }
+
+
+    .food-item:hover {
+
+        background: #eef0ff;
+    }
+
+
+    /* NOTE */
+
+    .note {
+
+        background: #eef0ff;
+
+        padding: 18px;
+
+        border-radius: 14px;
+
+        text-align: center;
+
+        color: #555;
+
+        line-height: 1.5;
+
+        margin-bottom: 25px;
+    }
+
+
+    /* BACK BUTTON */
+
+    .back-btn {
+
+        display: block;
+
+        width: fit-content;
+
+        margin: auto;
+
+        padding: 13px 28px;
+
+        background: #667eea;
+
+        color: white;
+
+        text-decoration: none;
+
+        border-radius: 25px;
+
+        font-weight: bold;
+
+        transition: 0.3s;
+    }
+
+
+    .back-btn:hover {
+
+        background: #4f5fd1;
+
+        transform: scale(1.04);
+    }
+
+
+    /* MOBILE */
+
+    @media (max-width: 750px) {
+
+        .menu-grid {
+
+            grid-template-columns: 1fr;
+        }
+
+        .container {
+
+            padding: 25px 18px;
+        }
+
+        h1 {
+
+            font-size: 27px;
+        }
+
+        .header-icon {
+
+            font-size: 45px;
+        }
+    }
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div class="header-icon">
+            🍴
+        </div>
+
+        <h1>
+            MessVoice Menu
+        </h1>
+
+        <p class="subtitle">
+            Today's available mess menu
+        </p>
+
+    </div>
+
+
+
+    <!-- MENU -->
+
+    <div class="menu-grid">
+
+
+        <!-- BREAKFAST -->
+
+        <div class="meal-card">
+
+            <div class="meal-icon">
+                🍳
+            </div>
+
+            <h2 class="meal-title">
+                Breakfast
+            </h2>
+
+
+            <div class="food-item">
+                🥔 Aloo Paratha
+            </div>
+
+            <div class="food-item">
+                🍚 Poha
+            </div>
+
+            <div class="food-item">
+                🍳 Bread Omelette
+            </div>
+
+        </div>
+
+
+
+        <!-- LUNCH -->
+
+        <div class="meal-card">
+
+            <div class="meal-icon">
+                🍚
+            </div>
+
+            <h2 class="meal-title">
+                Lunch
+            </h2>
+
+
+            <div class="food-item">
+                🍛 Rajma Rice
+            </div>
+
+            <div class="food-item">
+                🥘 Chole Rice
+            </div>
+
+            <div class="food-item">
+                🫓 Dal Roti
+            </div>
+
+        </div>
+
+
+
+        <!-- DINNER -->
+
+        <div class="meal-card">
+
+            <div class="meal-icon">
+                🍽️
+            </div>
+
+            <h2 class="meal-title">
+                Dinner
+            </h2>
+
+
+            <div class="food-item">
+                🧀 Paneer
+            </div>
+
+            <div class="food-item">
+                🫓 Chole Bhature
+            </div>
+
+            <div class="food-item">
+                🥗 Mix Veg
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- NOTE -->
+
+    <div class="note">
+
+        📌 <strong>MessVoice Tip</strong>
+
+        <br>
+
+        Check the menu before submitting your vote.
+        Your vote can only be submitted once.
+
+    </div>
+
+
+
+    <!-- BACK -->
+
+    <a
+        href="/dashboard"
+        class="back-btn">
+
+        ← Back to Dashboard
+
+    </a>
+
+
+</div>
+
+</body>
+
+</html>
